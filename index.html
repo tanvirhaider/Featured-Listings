@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>FEATURED PROPERTY Listings</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+<!--
+	[Template] REAL ESTATE: Featured Property Module (Desktop/Tablet) V2
+	version: 2
+	developer: Tanvir Haider
+	team: Ad Platforms
+	last modified: 03.02.2020 
+	git repo: https://github.com/tanvirhaider/Featured-Listings
+-->
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<body class="NYT-platform-ad">
+
+<div id="DFP-native-vars" style="position: absolute; width:0px; height:0px; opacity:0; visibility:hidden; display:none; overflow: hidden;">
+	<div id="GN-clickThrough">%%CLICK_URL_UNESC%%%%DEST_URL_UNESC%%</div>
+	<div id="GN-logo">[%logo%]</div>
+	<div id="GN-property-shot">[%MainImageDesktop%]</div>
+	<div id="GN-town">[%PropertyNeighborhood%]</div>
+	<div id="GN-price">[%ProperyPrice%]</div>
+	<div id="GN-address">[%PropertyAddress%]</div>
+	<div id="GN-bedroom-count">[%PropertyBedroomCount%]</div>
+	<div id="GN-bathroom-count">[%PropertyBathroomCount%]</div>
+	<div id="GN-property-type">[%PropertyType%]</div>
+	<div id="GN-agent-name">[%AgentName%]</div>
+	<div id="GN-agent-contact-info">[%AgentContactInfo%]</div>
+</div>  
+
+
+<div style="display: none;">[%CustomTracking%]</div>
+<div id="impression-pixel" class="impression-tracker" style="display: none;"><img src="[%ImpressionPixel%]" width="1" height="1" border="0" /></div>
+<div id="impression-pixel-2" class="impression-tracker" style="display: none;"><img src="[%ImpressionPixel2%]" width="1" height="1" border="0" /></div>
+<script type="text/javascript">parent.postMessage({exclusive: [%Exclusivity%], type: '[%ExclusivityType%]', div:'%%PATTERN:div%%'},'*');</script>
+
+
+<script id="script-for-ad" type="text/javascript">
+      
+"use strict";
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+var NativeTracking =
+function () {
+function NativeTracking(DFPdata) {
+	_classCallCheck(this, NativeTracking);
+
+	var DFPTrackingObject = new Object();
+	DFPTrackingObject.baseURL = DFPdata.baseURL;
+	DFPTrackingObject.orderID = DFPdata.orderID;
+	DFPTrackingObject.creativeID = DFPdata.creativeID;
+	DFPTrackingObject.lineItemID = DFPdata.lineItemID;
+	DFPTrackingObject.dfp_viewport = DFPdata.dfp_viewport;
+	DFPTrackingObject.pageViewID = DFPdata.pageViewID;
+	DFPTrackingObject.dfp_pos = DFPdata.dfp_pos;
+	DFPTrackingObject.prop = DFPdata.prop;
+	DFPTrackingObject.method = DFPdata.method;
+	var generatedString = DFPdata.baseURL + "/?subject=" + DFPdata.application + "&dfp_creativeid=" + DFPdata.creativeID + "&dfp_lineitemid=" + DFPdata.lineItemID + "&dfp_orderid=" + DFPdata.orderID + "&dfp_viewport=" + DFPdata.dfp_viewport + "&pageviewid=" + DFPdata.pageViewID + "&dfp_pos=" + DFPdata.dfp_pos + "&dfp_prop=" + DFPdata.prop;
+	DFPTrackingObject.url = generatedString;
+	this.DFPTrackingObject = DFPTrackingObject;
+}
+
+_createClass(NativeTracking, [{
+  key: "track",
+  value: function track(data) {
+    var DFPTrackingObject = new Object();
+    DFPTrackingObject = this.DFPTrackingObject;
+    DFPTrackingObject.type = data.type;
+    DFPTrackingObject.currentTarget = data.currentTarget;
+    DFPTrackingObject.timestamp = new Date().toString();
+    var generatedLink = DFPTrackingObject.url;
+    var tempTrackingLink;
+    var eventType = data.type;
+
+    if (data.currentTarget && data.type) {
+      tempTrackingLink = generatedLink + "&dfp_event_type=" + eventType + "&dfp_event_location=" + data.currentTarget;
+
+      try {
+        if (DFPTrackingObject.method == "pixel") {
+          var trackingPixel = new Image(1, 1);
+          trackingPixel.src = tempTrackingLink;
+        }
+      } catch (Error) {}
+    }
+
+    if (data.url) {try {window.open(data.url, '_blank');} catch (Error) {}}
+  }
+}]);
+
+return NativeTracking;
+}();
+
+var TR = new NativeTracking({
+baseURL: "https://et.nytimes.com",
+application: "dfp-ad-events",
+creativeID: "%ecid!",
+lineItemID: "%eaid!",
+orderID: "%ebuy!",
+dfp_viewport: "%%PATTERN:vp%%",
+pageViewID: "%%PATTERN:page_view_id%%",
+dfp_pos: "%%PATTERN:pos%%",
+prop: "%%PATTERN:prop%%",
+method: "pixel"
+});
+
+
+// -------- ******* STAGE ******* --------- 
+function Stage(data) {
+
+	var stage = document.createElement('div');
+
+	if (data.id) {stage.setAttribute('id', data.id);} else {stage.setAttribute('id', "stage");}
+
+	if (data.width) {
+	stage.width = data.width;
+	stage.style.width = data.width + 'px';
+	} 
+
+	if (data.height) {
+	stage.height = data.height;
+	stage.style.height = data.height + 'px';
+	} 
+
+	if (data.position) {stage.style.position = data.position;} 
+
+	if (data.class) {stage.className += data.class;} 
+
+	stage.style.padding = '0px';
+	stage.style.clip = 'rect(0px,' + (data.width + 2) + 'px,' + (data.height + 2) + 'px, 0px )'; // stage.style.overflow = 'hidden';
+
+	stage.style.scrolling = 'no';
+
+	if (data.backgroundColor) {
+	stage.style.background = data.backgroundColor;
+	stage.style.backgroundSize = data.width + 'px ' + data.height + 'px';
+	stage.style.backgroundRepeat = 'no-repeat';
+	}
+
+	if (data.border) {
+		if (!data.id) {data.id = "stage";}
+
+		var borderObj = document.createElement('div');
+		borderObj.setAttribute('id', data.id + "-Border");
+		borderObj.style.width = "100%";
+		borderObj.style.height = data.height + 'px';
+		borderObj.style.position = 'absolute';
+		borderObj.style.margin = '0px';
+		borderObj.style.zIndex = 999999;
+		borderObj.style.border = data.border.thickness + "px solid " + data.border.color + "";
+		borderObj.style.boxSizing = "border-box";
+		borderObj.style.pointerEvents = "none";
+		stage.appendChild(borderObj);
+	} // Public
+
+
+	stage.addChild = function (child) {
+		stage.appendChild(child);
+		childIndex++;
+		child.style.zIndex = childIndex;
+	};
+
+	if (data.container) {data.container.appendChild(stage);} else {document.body.appendChild(stage);}
+
+	return stage;
+}
+
+function Sprite(data) {
+
+	var elementType;
+
+	if (data.element) {elementType = data.element;} else {elementType = "div";}
+
+	var obj = document.createElement(elementType);
+	this.obj = obj;
+
+	if (data.id) {obj.setAttribute('id', data.id);} else {obj.setAttribute('id', '');}
+	if (data.class) {obj.className += data.class;}
+	if (data.position) {obj.style.position = data.position;} 
+	if (data.display) {obj.style.display = data.display;}
+
+	if (data.width) {
+	obj.width = data.width;
+	obj.style.width = data.width + 'px';
+	} else {this.width = 0;}
+
+	if (data.height) {
+	obj.height = data.height;
+	obj.style.height = data.height + 'px';
+	} else {this.height = 0;}
+
+	if (data.image) {
+	var imgW = data.width + 'px';
+	var imgH = data.height + 'px';
+	var style = obj.style;
+	style.width = imgW;
+	style.height = imgH;
+	style.backgroundImage = 'url(' + data.image + ')';
+	style.backgroundRepeat = 'no-repeat';
+
+	if (!data.cover) {style.backgroundSize = imgW + ' ' + imgH;}
+	}
+
+	if (data.button) {
+	var btn = document.createElement("button");
+
+	if (data.button.text) {btn.innerHTML = data.button.text;}
+
+	obj.appendChild(btn);
+	} // text: {content:"Read More",color:"white",size:"14px",width:"200px",lineHeight:"100px",fontFamily:"Arial"}
+
+
+	if (data.text) {
+	if (data.text.color) {obj.style.color = data.text.color;}
+	if (data.text.fontSize) {obj.style.fontSize = data.text.fontSize;}
+	if (data.text.fontFamily) {obj.style.fontFamily = data.text.fontFamily;}
+	if (data.text.maxWidth) {obj.style.maxWidth = data.text.width;}
+	if (data.text.lineHeight) {obj.style.lineHeight = data.text.lineHeight;}
+	if (data.text.fontWeight) {obj.style.fontWeight = data.text.fontWeight;}
+	obj.innerHTML = data.text.content;
+	}
+
+	if (data.color) {
+	var imgW = data.width + 'px';
+	var imgH = data.height + 'px';
+	var style = obj.style;
+	style.width = imgW;
+	style.height = imgH;
+	style.backgroundColor = data.color;
+	} // gradient: {width:1024, height: 650, direction: "right", color1: "rgba(255,255,0,0)", color2: "rgba(255,10,0,1)" }
+
+
+	if (data.gradient) {
+	var style = this.obj.style;
+	style.width = data.gradient.width + "px";
+	style.height = data.gradient.height + "px";
+	style.background = '-webkit-linear-gradient(' + data.gradient.direction + ',' + data.gradient.color1 + ', ' + data.gradient.color2 + ')';
+	style.background = '-o-linear-gradient(' + data.gradient.direction + ',' + data.gradient.color1 + ', ' + data.gradient.color2 + ')';
+	style.background = '-moz-linear-gradient(' + data.gradient.direction + ',' + data.gradient.color1 + ', ' + data.gradient.color2 + ')';
+	style.background = 'linear-gradient(' + data.gradient.direction + ',' + data.gradient.color1 + ', ' + data.gradient.color2 + ')';
+	}
+
+	if (data.container) {data.container.appendChild(obj);}
+
+	if (data.border) {
+	var borderObj = document.createElement('div');
+	borderObj.setAttribute('id', data.id + "-Border");
+	borderObj.style.width = data.width + 'px';
+	borderObj.style.height = data.height + 'px';
+	borderObj.style.position = 'absolute';
+	borderObj.style.margin = '0px';
+	borderObj.style.zIndex = 999999;
+	borderObj.style.border = data.border.thickness + "px solid " + data.border.color + "";
+	borderObj.style.boxSizing = "border-box";
+	borderObj.style.pointerEvents = "none";
+
+	if (data.border.radius) {borderObj.style.borderRadius = data.border.radius;}
+
+	obj.appendChild(borderObj);
+	}
+
+	if (data.click) {
+	var obj = this.obj;
+	obj.addEventListener('click', data.click.function, false);
+	obj.style.cursor = "pointer";
+	}
+
+	if (data.over) {
+	var obj = this.obj;
+	obj.addEventListener('mouseover', data.over.function, false);
+	obj.style.cursor = "pointer";
+	}
+
+	if (data.out) {
+	var obj = this.obj;
+	obj.addEventListener('mouseout', data.out.function, false);
+	obj.style.cursor = "pointer";
+	}
+
+	if (data.mousemove) {
+	var obj = this.obj;
+	obj.addEventListener('mousemove', data.mousemove.function, false); // obj.style.cursor="pointer";
+	}
+
+	var xval = 0;
+	var yval = 0;
+	var rotationval = 0;
+
+	if (data.x) {xval = data.x;}
+	if (data.y) {yval = data.y;}
+
+	if (data.z) {
+	var style = obj.style;
+	style.zIndex = data.z;
+	}
+
+	if (data.x || data.y) {obj.style.transform = "translate(" + xval + "px," + yval + "px)";}
+
+	if (data.mask) {obj.style.clip = 'rect(' + data.mask.y + 'px,' + (data.mask.x + data.mask.width) + 'px,' + (data.mask.y + data.mask.height) + 'px,' + data.mask.x + 'px)';}
+
+}
+
+
+function createClass(name, rules) {
+	var style = document.createElement('style');
+	style.type = 'text/css';
+	style.media = 'all';
+	document.getElementsByTagName('head')[0].appendChild(style);
+
+	if (!(style.sheet || {}).insertRule) {(style.styleSheet || style.sheet).addRule(name, rules);} else {style.sheet.insertRule(name + "{" + rules + "}", 0);}
+}
+
+
+function loadingDataFromDFPnativeTemplate() {
+	var data = {};
+	data.exit = document.getElementById("GN-clickThrough").textContent;
+	data.logo = document.getElementById("GN-logo").textContent;
+	data.hero = document.getElementById("GN-property-shot").textContent;
+	data.town = document.getElementById("GN-town").textContent;
+	data.price = document.getElementById("GN-price").textContent;
+	data.address = document.getElementById("GN-address").textContent;
+	data.beds = document.getElementById("GN-bedroom-count").textContent;
+	data.baths = document.getElementById("GN-bathroom-count").textContent;
+	data.propertyType = document.getElementById("GN-property-type").textContent; // data.avator = document.getElementById("GN-agent-avator").textContent;
+
+	data.agentName = document.getElementById("GN-agent-name").textContent;
+	data.contact = document.getElementById("GN-agent-contact-info").textContent;
+	return data;
+}
+
+function init(data) {
+
+	var stage = new Stage({id: "adWrapper",class: "stageStyle"});
+
+	var adContainer = new Sprite({id: "adContainer",class: "module-style",container: stage});
+
+	var imgBox = new Sprite({
+		id: 'imgBox',
+		class: 'imgBox-style',
+		container: adContainer.obj,
+		image: data.hero,
+		click: {function: function _function() {TR.track({type: "clickURL",currentTarget: "image",url: data.exit});}}
+	});
+
+	new Sprite({id: "gradient",class: "gradient-style",container: imgBox.obj});
+
+	var contentBox = new Sprite({id: 'contentBox',class: 'contentBox-style',container: adContainer.obj});
+
+	new Sprite({
+		id: "logo",
+		class: "logo-style",
+		container: adContainer.obj,
+		image: data.logo,
+		click: {function: function _function() {TR.track({type: "clickURL",currentTarget: "logo",url: data.exit});}}
+	});
+
+	new Sprite({
+	id: 'town',
+	class: 'town-style',
+	container: contentBox.obj,
+	text: {content: data.town},
+	click: {function: function _function() {TR.track({type: "clickURL",currentTarget: "town",url: data.exit});}}
+	});
+
+	new Sprite({
+		id: 'price',
+		class: 'price-style',
+		container: contentBox.obj,
+		text: {content: data.price},
+		click: {function: function _function() {TR.track({type: "clickURL",currentTarget: "price",url: data.exit});}}
+	});
+
+	new Sprite({
+		id: 'address',
+		class: 'address-style',
+		container: contentBox.obj,
+		text: {content: data.address},
+		click: {function: function _function() {TR.track({type: "clickURL",currentTarget: "address",url: data.exit});}}
+	});
+
+
+	var propertyContent = new Sprite({
+		id: 'propertyContent',
+		class: 'propertyContent-style',
+		container: contentBox.obj,
+		click: {function: function _function() {TR.track({type: "clickURL",currentTarget: "propertyContent",url: data.exit});}}
+	});
+
+	new Sprite({
+		id: 'beds',
+		class: 'beds-style',
+		container: propertyContent.obj,
+		text: {content: data.beds}
+	});
+
+	new Sprite({
+		id: 'propertyContentDevider-1',
+		class: 'propertyContentDevider-style',
+		container: propertyContent.obj
+	});
+
+	new Sprite({
+		id: 'baths',
+		class: 'baths-style',
+		container: propertyContent.obj,
+		text: {content: data.baths}
+	});
+
+	new Sprite({
+		id: 'propertyContentDevider-2',
+		class: 'propertyContentDevider-style',
+		container: propertyContent.obj
+	});
+
+	new Sprite({
+		id: 'propertyType',
+		class: 'propertyType-style',
+		container: propertyContent.obj,
+		text: {content: data.propertyType}
+	});
+
+	var lineDevider = new Sprite({
+		id: 'lineDevider',
+		class: 'lineDevider-style',
+		container: contentBox.obj
+	});
+
+	var agentBox = new Sprite({
+		id: 'agentBox',
+		class: 'agentBox-style',
+		container: contentBox.obj
+	}); 
+
+	var contactBox = new Sprite({
+		id: 'contactBox',
+		class: 'contactBox-style',
+		container: agentBox.obj
+	});
+
+	new Sprite({
+		id: 'agentName',
+		class: 'agentName-style',
+		container: contactBox.obj,
+		text: {content: data.agentName}
+	});
+
+	new Sprite({
+		id: 'agentContactInfo',
+		class: 'agentContactInfo-style',
+		container: contactBox.obj,
+		text: {content: data.contact}
+	});
+
+}
+
+var adData = loadingDataFromDFPnativeTemplate();
+setTimeout(function () {init(adData);}, 100);
+
+</script> 
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
