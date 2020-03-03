@@ -93,7 +93,7 @@ a {-webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
   box-sizing: border-box;
   background-size: contain;
   background-position: 0% 0%;
-  height: 58px;
+  height: 44px;
   overflow: hidden;
   width: 100%;
   max-width: 110px;
@@ -195,8 +195,9 @@ a {-webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 	  width: calc(100% - 324px);
       position: relative;
       padding-left: 10px;
-      padding-top: 15px;
-	  height: auto;
+      /* padding-top: 15px; */
+    height: auto;
+    max-height: 155px;
 	  overflow: hidden;
       align-self: flex-end; }
       /* @media all and (min-width: 545px) and (max-width: 703px) {
@@ -226,7 +227,7 @@ a {-webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
         color: #999999;
         height: 13px;
         line-height: 11px;
-        margin-bottom: 5px; }
+        margin-bottom: 0px; }
         /* @media all and (min-width: 545px) and (max-width: 703px) {
           .stageStyle .module-style .contentBox-style .town-style {
             font-size: 11px;
@@ -281,6 +282,7 @@ a {-webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
           font-family: 'Source Sans Pro', sans-serif;
           font-weight: 400;
           font-size: 13px;
+          max-width: 70px;
           color: black; }
           /* @media all and (min-width: 545px) and (max-width: 703px) {
             .stageStyle .module-style .contentBox-style .propertyContent-style .beds-style {
@@ -296,6 +298,7 @@ a {-webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
           font-family: 'Source Sans Pro', sans-serif;
           font-weight: 400;
           font-size: 13px;
+          max-width: 70px;
           color: black; }
           /* @media all and (min-width: 545px) and (max-width: 703px) {
             .stageStyle .module-style .contentBox-style .propertyContent-style .baths-style {
@@ -334,7 +337,8 @@ a {-webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
         .stageStyle .module-style .contentBox-style .propertyContent-style .propertyType-style {
           font-family: 'Source Sans Pro', sans-serif;
           font-weight: 400;
-          font-size: 16px;
+          font-size: 13px;
+          max-width: 70px;
           color: black; }
           /* @media all and (min-width: 545px) and (max-width: 703px) {
             .stageStyle .module-style .contentBox-style .propertyContent-style .propertyType-style {
@@ -353,7 +357,7 @@ a {-webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
         background-color: #CCCCCC;
         -webkit-transform: scaleY(0.5);
                 transform: scaleY(0.5);
-        margin-top: 14px;
+        margin-top: 7px;
         box-sizing: border-box; }
         /* @media all and (min-width: 545px) and (max-width: 703px) {
           .stageStyle .module-style .contentBox-style .lineDevider-style {
@@ -366,7 +370,7 @@ a {-webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
             display: none; } }
       .stageStyle .module-style .contentBox-style .agentBox-style {
         align-items: center;
-        height: 66px;
+        height: 50px;
         display: flex; }
         /* @media all and (min-width: 545px) and (max-width: 703px) {
           .stageStyle .module-style .contentBox-style .agentBox-style {
